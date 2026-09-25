@@ -522,11 +522,33 @@ function LessonContent() {
   // Completion Celebration Screen
   if (isCompletedScreen && completionStats) {
     return (
-      <div className="lesson-page-container" style={{ alignItems: "center", justifyContent: "center", padding: 24 }}>
-        <div style={{ maxWidth: 520, width: "100%", textAlign: "center" }}>
-          <MascotDuo mood="cheering" size={160} />
+      <div
+        className="lesson-page-container"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          padding: 24
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 520,
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            margin: "0 auto"
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", marginBottom: 16 }}>
+            <MascotDuo mood="cheering" size={160} />
+          </div>
 
-          <h1 style={{ fontSize: 34, fontWeight: 900, color: "var(--yellow)", marginTop: 20, marginBottom: 8 }}>
+          <h1 style={{ fontSize: 34, fontWeight: 900, color: "var(--yellow)", marginTop: 0, marginBottom: 8 }}>
             Lesson Complete!
           </h1>
           <p style={{ fontSize: 18, color: "var(--text-sub)", fontWeight: 700, marginBottom: 32 }}>
@@ -995,7 +1017,7 @@ function LessonContent() {
                 </div>
                 <div>
                   <div className="feedback-text-title wrong">Correct solution:</div>
-                  <div style={{ color: "#ffffff", fontWeight: 700, fontSize: 16, marginTop: 2 }}>
+                  <div className="feedback-solution-text">
                     {correctSolutionText}
                   </div>
                 </div>

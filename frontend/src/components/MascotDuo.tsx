@@ -4,17 +4,30 @@ interface MascotDuoProps {
   mood?: "happy" | "cheering" | "crying" | "determined" | "sleeping";
   size?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function MascotDuo({ mood = "happy", size = 110, className = "" }: MascotDuoProps) {
+export function MascotDuo({ mood = "happy", size = 110, className = "", style }: MascotDuoProps) {
   return (
-    <div style={{ width: size, height: size * 1.05 }} className={`inline-flex items-center justify-center ${className}`}>
+    <div
+      style={{
+        width: size,
+        height: size * 1.05,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "0 auto",
+        ...style
+      }}
+      className={className}
+    >
       <svg
         viewBox="0 0 140 145"
         width={size}
         height={size * 1.05}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        style={{ display: "block", margin: "0 auto" }}
       >
         {/* Feet */}
         <ellipse cx="50" cy="132" rx="12" ry="6" fill="#ff9600" />

@@ -68,6 +68,16 @@
   --footer-correct-bg: #18272e;
   --footer-incorrect-bg: #281a1f;
 
+  --feedback-correct-title: #58cc02;
+  --feedback-correct-subtext: #58cc02;
+  --feedback-correct-circle-bg: #202f36;
+  --feedback-correct-circle-color: #58cc02;
+
+  --feedback-wrong-title: #ff4b4b;
+  --feedback-wrong-text: #ffffff;
+  --feedback-wrong-circle-bg: #3e1e24;
+  --feedback-wrong-circle-color: #ff4b4b;
+
   --scrollbar-track: #131f24;
   --scrollbar-thumb: #37464f;
   --scrollbar-border: #131f24;
@@ -144,6 +154,16 @@
 
   --footer-correct-bg: #d7ffb8;
   --footer-incorrect-bg: #ffdfe0;
+
+  --feedback-correct-title: #3c8200;
+  --feedback-correct-subtext: #46a302;
+  --feedback-correct-circle-bg: #ffffff;
+  --feedback-correct-circle-color: #58cc02;
+
+  --feedback-wrong-title: #ea2b2b;
+  --feedback-wrong-text: #ea2b2b;
+  --feedback-wrong-circle-bg: #ffffff;
+  --feedback-wrong-circle-color: #ea2b2b;
 
   --scrollbar-track: #ffffff;
   --scrollbar-thumb: #e5e5e5;
@@ -1571,24 +1591,26 @@ a {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background-color: var(--card-bg);
+  background-color: var(--feedback-correct-circle-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--green);
+  color: var(--feedback-correct-circle-color);
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .feedback-wrong-circle {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background-color: var(--red-light);
+  background-color: var(--feedback-wrong-circle-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--red);
+  color: var(--feedback-wrong-circle-color);
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .feedback-text-title {
@@ -1597,10 +1619,18 @@ a {
   line-height: 1.2;
 }
 .feedback-text-title.correct {
-  color: var(--green);
+  color: var(--feedback-correct-title);
 }
 .feedback-text-title.wrong {
-  color: var(--red);
+  color: var(--feedback-wrong-title);
+}
+
+.feedback-solution-text {
+  color: var(--feedback-wrong-text);
+  font-weight: 800;
+  font-size: 18px;
+  margin-top: 3px;
+  line-height: 1.3;
 }
 
 .feedback-quick-options {
@@ -1609,10 +1639,10 @@ a {
   margin-top: 6px;
   font-size: 12px;
   font-weight: 800;
-  color: var(--green);
+  color: var(--feedback-correct-subtext);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  opacity: 0.85;
+  opacity: 0.95;
 }
 
 /* Modals */
