@@ -87,17 +87,14 @@ export default function ProfilePage() {
           <div className="path-center-column" style={{ maxWidth: 660 }}>
             {/* User Profile Header Card */}
             <div
-              className="sidebar-card"
+              className="sidebar-card profile-header-card"
               style={{
                 width: "100%",
-                padding: "32px 28px",
-                display: "flex",
-                alignItems: "center",
-                gap: 28,
                 marginBottom: 32
               }}
             >
               <div
+                className="profile-avatar-circle"
                 style={{
                   width: 100,
                   height: 100,
@@ -107,7 +104,8 @@ export default function ProfilePage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 54
+                  fontSize: 54,
+                  flexShrink: 0
                 }}
               >
                 {user?.avatar || "🦉"}
@@ -118,7 +116,7 @@ export default function ProfilePage() {
                 <p style={{ color: "var(--text-sub)", fontWeight: 700, fontSize: 16 }}>
                   @{user?.username || "duo_learner"} • Joined March 2026
                 </p>
-                <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
                   <span
                     style={{
                       background: "var(--blue-light)",
@@ -150,7 +148,7 @@ export default function ProfilePage() {
             {/* Statistics Grid */}
             <div style={{ width: "100%", marginBottom: 32 }}>
               <h2 style={{ fontSize: 20, fontWeight: 900, marginBottom: 16 }}>Statistics</h2>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="profile-stats-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                 {/* Streak */}
                 <div className="sidebar-card" style={{ display: "flex", alignItems: "center", gap: 16, padding: 18 }}>
                   <Flame size={32} color="var(--orange)" fill="var(--orange)" />

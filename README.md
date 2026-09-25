@@ -1,92 +1,132 @@
-# Duolingo Web App Clone
+# 🦉 Duolingo Web App Clone
 
-A full-stack clone of the modern Duolingo web application, replicating Duolingo's dark UI/UX design, playful gamified aesthetics, core lesson player loop, and gamification workflows.
+A full-stack, pixel-perfect clone of the modern Duolingo web application. It replicates Duolingo's signature dark UI/UX design, playful gamified aesthetics, core lesson player loop, and progression systems.
 
 Built for the **Duolingo SDE Fullstack Assignment**.
 
 ---
 
-## 🌟 Key Features
+## 🌐 Live Deployments
 
-### 1. Learning Path / Skill Tree (Exact Duolingo Home Path)
-- **Pixel-Perfect Dark Theme**: `#131f24` background, `#37464f` borders, signature `#58cc02` green accents.
-- **Snake Path Progression**: Serpentine path of circular skill nodes with lock/unlock states.
-- **Active Node Indicators**: Floating animated `"START"` badge, glowing dark green outer progress ring, and 3D elevation.
-- **Unit Header Banner**: Section tag (`← SECTION 1, UNIT 1`), title (`Order at a café`), and interactive `GUIDEBOOK` popover modal.
-- **Mascot Flourishes**: Duo the owl standing beside the path on an oval pedestal/shadow, cheering the learner on.
-- **Top Bar Stats**: Course flag (`🇪🇸 1`), Streak flame (`🔥`), Gems diamond (`💎`), and Hearts counter (`❤️`).
-- **Interactive Tooltip Popovers**: Clicking any node opens a lesson preview dialog with lesson progress and a `"START +15 XP"` button.
+- **Frontend App**: [https://duolingo-clone-two-smoky.vercel.app/](https://duolingo-clone-two-smoky.vercel.app/)
+- **Backend API**: [https://duolingo-backend-t3lp.onrender.com](https://duolingo-backend-t3lp.onrender.com)
+- **Interactive API Docs (Swagger)**: [https://duolingo-backend-t3lp.onrender.com/docs](https://duolingo-backend-t3lp.onrender.com/docs)
+- **Backend Health Check**: [https://duolingo-backend-t3lp.onrender.com/api/health](https://duolingo-backend-t3lp.onrender.com/api/health)
+
+---
+
+## 🌟 Essential Features Implemented
+
+### 1. Learning Path & Skill Tree (Exact Duolingo Home)
+- **Signature Dark Theme**: Strict adherence to Duolingo design tokens (`#131f24` background, `#37464f` borders, `#58cc02` green, `#1cb0f6` blue).
+- **Snake Path Progression**: Serpentine curved path of circular skill nodes with distinct states: *Completed* (golden/check), *Active* (elevated with glowing outer progress ring & floating animated `"START"` badge), and *Locked*.
+- **Unit Header Banner**: Section label (`SECTION 1, UNIT 1`), title (`Order at a café`), and an interactive **`GUIDEBOOK`** modal containing key phrases and grammar tips.
+- **Mascot Duo Flourishes**: Animated Duo the Owl standing on an oval pedestal cheering the user on.
+- **Top Stats Bar**: Live indicators for Active Course (`🇪🇸 Spanish`), Streak Flame (`🔥`), Gems (`💎`), and Hearts (`❤️`).
+- **Lesson Tooltip Popovers**: Clicking any skill node opens an interactive dialog showing lesson progress and a `"START +15 XP"` action button.
 
 ### 2. Full-Featured Lesson Player (The Core Loop)
-Recreates the lesson player with **all 5 required exercise types**:
-1. **Multiple Choice**: 3D option cards with icons/subtext and keyboard shortcuts `1`, `2`, `3`.
-2. **Translate with Word Bank**: Tap tiles from the word pool into the answer slot, or tap them in the answer slot to return them.
+Recreates the lesson engine supporting **all 5 required exercise types**:
+1. **Multiple Choice**: 3D option cards with icons/subtext and keyboard shortcuts (`1`, `2`, `3`).
+2. **Translate with Word Bank**: Interactive tiles you can tap into the answer sentence slot or tap to return.
 3. **Match Pairs**: Bilingual tiles that highlight on select, turn green on match, and wobble red on mismatch.
-4. **Fill in the Blank**: Sentence with dynamic fill-in slot and selectable option tiles.
-5. **Type the Answer**: Freeform text input with special Spanish accent buttons (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`, `¡`).
+4. **Fill in the Blank**: Sentence with dynamic blanks and selectable word bank options.
+5. **Type the Answer**: Freeform text input with special Spanish accent helper buttons (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`, `¡`).
 
-### 3. Iconic Feedback & Audio Engine
+### 3. Audio Engine, TTS & Feedback
 - **Duolingo Bottom Feedback Bar**:
-  - **Correct**: Light green bar with checkmark circle, motivational quote, and big green 3D `"CONTINUE"` button (Enter key shortcut).
+  - **Correct**: Light green bar with checkmark circle, motivational phrase, and green 3D `"CONTINUE"` button (`Enter` key shortcut).
   - **Incorrect**: Light red bar with cross circle, correct solution reveal, and red 3D `"GOT IT"` button.
-- **Web Audio API Sound Engine**: Custom synthesized Duolingo tones (two-tone correct chime, incorrect buzz thud, click tap, and victory fanfare) with zero external audio file dependencies.
-- **Text-to-Speech (TTS)**: Built-in `window.speechSynthesis` with native Spanish pronunciation and audio speaker buttons.
-- **Celebration Confetti**: Dynamic particle explosion via `canvas-confetti` upon lesson completion, featuring XP gain, accuracy percentage, and streak counter.
+- **Synthesized Audio Engine**: Zero external audio file dependencies! Custom sound synthesis via the **Web Audio API** producing authentic two-tone correct chimes, error buzzes, tap clicks, and completion fanfare.
+- **Text-to-Speech (TTS)**: Integrated `window.speechSynthesis` with native Spanish pronunciation and interactive audio speaker buttons.
+- **Celebration Screen**: Dynamic confetti explosion via `canvas-confetti` upon lesson completion, featuring XP breakdown, accuracy stats, and streak progression.
 
-### 4. Gamification & Progression
-- **Hearts System**: 5 hearts max. Lose 1 heart on a wrong answer. Triggers the *"Out of Hearts"* modal when depleted, offering gem refills (50 gems) or practice mode.
-- **Streak Logic & Simulation**: Increments on daily lesson activity. Includes an SDE Evaluator Control to test next-day rollover and streak advancement.
-- **Weekly Leaderboard**: Silver League standings with promotion zone (top 3) and demotion zone indicators across 10 seeded competitors.
-- **Daily Quests & Badges**: Tracks daily XP goals (e.g. 10/10 XP with chest reward) and unlocks achievements (*Wildfire*, *Sage*, *Scholar*, *Sharpshooter*, *Champion*).
-- **In-App Shop**: Purchase Heart Refills, Streak Freezes, and Double or Nothing wagers with real-time gem deductions.
+### 4. Gamification, Progression & Economy
+- **Hearts System**: 5 hearts maximum. Losing all hearts prompts the *"Out of Hearts"* modal, allowing gem refills (50 gems) or practice mode.
+- **Weekly Leaderboard**: Silver League standings with promotion zone (top 3) and demotion zone indicators across 10 dynamically updated competitors.
+- **Daily Quests & Milestones**: Daily quest tracking (e.g., Earn 10 XP, Complete 1 lesson) with chest rewards, alongside achievements (*Wildfire*, *Sage*, *Scholar*, *Sharpshooter*, *Champion*).
+- **In-App Shop**: Purchase Heart Refills, Streak Freezes, and Double or Nothing wagers with real-time gem deductions and inventory state.
+
+---
+
+## 🧪 Interactive Evaluator & Demo Features (Streak Testing)
+
+To simplify testing and grading without waiting 24 real-world hours, an **Evaluator Demo Panel** is integrated into the right sidebar and profile page:
+
+| Demo Feature | Action & Verification |
+|---|---|
+| **🔥 Simulate Next Day (Streak Testing)** | Advances the simulated calendar day. If the user earned XP today, the streak increases by +1 and marks today completed. If no XP was earned, it tests **Streak Freeze protection** (consumes a freeze if owned) or resets the streak to 0. |
+| **❤️ Instant Heart Refill** | Instantly restores health to 5/5 hearts to resume testing without spending gems. |
+| **🔄 Reset Demo State** | Restores the default seeded state (Unit 1, Lesson 3 active, 3-day streak, 450 gems, 4 hearts) for clean, repeatable evaluation. |
+| **⌨️ Keyboard Shortcuts** | Use `1`-`9` to pick options, `Enter` to check/continue, and `Backspace` to undo word bank selections. |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 16 (App Router), TypeScript, Vanilla CSS (Duolingo Design System), `lucide-react`, `canvas-confetti`.
-- **Backend**: Python 3.13, FastAPI, Uvicorn, Pydantic v2.
-- **Database**: SQLite (SQLAlchemy 2.0 ORM) with relational schema and automated database seeding on startup.
-- **Audio & TTS**: Web Audio API (synthetic chimes) + Web Speech API (`es-ES` TTS).
+- **Frontend**: 
+  - **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+  - **Language**: TypeScript
+  - **Styling**: Vanilla CSS (Duolingo Design System tokens, 3D button animations, glassmorphism)
+  - **Icons & Effects**: `lucide-react`, `canvas-confetti`
+  - **Audio**: Web Audio API (synthesized tones) + Web Speech API (`es-ES` TTS)
+- **Backend**:
+  - **Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Python 3.11+)
+  - **Server**: Uvicorn ASGI
+  - **Data Validation**: Pydantic v2
+- **Database & ORM**:
+  - **Database**: SQLite (local/Render) with PostgreSQL compatibility
+  - **ORM**: SQLAlchemy 2.0 with automated startup table generation and data seeding
+- **Deployment & Hosting**:
+  - **Frontend**: [Vercel](https://vercel.com)
+  - **Backend**: [Render](https://render.com)
 
 ---
 
-## 🏗️ Architecture & Database Schema
+## 🏗️ Architecture Overview
 
 ```
 DuolingoClone/
 ├── backend/
 │   ├── app/
 │   │   ├── database.py       # Engine, SessionLocal, Base, DATABASE_URL config
-│   │   ├── models.py         # SQLAlchemy ORM Models (User, Unit, Skill, Lesson, Exercise, etc.)
+│   │   ├── models.py         # SQLAlchemy Models (User, Course, Unit, Skill, Lesson, Exercise, etc.)
 │   │   ├── schemas.py        # Pydantic Request & Response Schemas
-│   │   ├── seed_data.py      # Seed data generator for Spanish Course & Silver League
+│   │   ├── seed_data.py      # Seed generator for Spanish course & Silver League
 │   │   ├── main.py           # FastAPI entrypoint, CORS middleware, auto-seeding
-│   │   └── routers/          # Modular API endpoints (user, course, lessons, leaderboard, shop, achievements)
+│   │   └── routers/          # Modular API routers
+│   │       ├── user.py       # User profile, stats, streak rollover, hearts refill
+│   │       ├── course.py     # Course & unit tree with completion states
+│   │       ├── lessons.py    # Lesson session initialization & completion submission
+│   │       ├── leaderboard.py# Weekly league standings & ranking calculation
+│   │       ├── achievements.py# Daily quests & achievement badges
+│   │       └── shop.py       # Power-up items & purchase handling
 │   ├── requirements.txt      # Python dependencies
-│   ├── run.py                # Server runner script
-│   └── .env.example          # Backend environment template
+│   ├── run.py                # Server launcher script
+│   └── .env.example          # Backend environment variables template
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── globals.css   # Pixel-perfect Duolingo dark theme design tokens & 3D buttons
-│   │   │   ├── layout.tsx    # Root layout with Nunito font and metadata
-│   │   │   ├── page.tsx      # Main Home Path / Snake Skill Tree
+│   │   │   ├── globals.css   # Duolingo dark theme design tokens & 3D buttons
+│   │   │   ├── layout.tsx    # Root layout with responsive viewports & metadata
+│   │   │   ├── page.tsx      # Main Home Learning Path / Snake Skill Tree
 │   │   │   ├── lesson/       # Fullscreen Lesson Player (all 5 exercise types)
 │   │   │   ├── leaderboard/  # Weekly League Standings
 │   │   │   ├── quests/       # Daily Quests & Milestones
 │   │   │   ├── shop/         # Power-ups & Heart Refills Store
-│   │   │   └── profile/      # Learner Stats & SDE Evaluator Control Panel
+│   │   │   └── profile/      # User Stats & SDE Evaluator Control Panel
 │   │   ├── components/       # Reusable components (Sidebar, TopBar, RightSidebar, MascotDuo, Modals)
 │   │   └── utils/            # API client (api.ts) & Web Audio Synthesizer (sound.ts)
 │   ├── package.json
-│   └── .env.example          # Frontend environment template
+│   └── .env.example          # Frontend environment variables template
 │
 └── README.md
 ```
 
-### Relational Schema Diagram
+---
+
+## 🗄️ Database Schema
 
 ```
  +--------------------+       +--------------------+       +--------------------+
@@ -113,80 +153,70 @@ DuolingoClone/
  +--------------------+                                    | is_completed: bool |
                                                            | crown_level: int   |
                                                            +--------------------+
+
+ +--------------------+       +--------------------+       +--------------------+
+ |        User        |       |     DailyQuest     |       |      ShopItem      |
+ +--------------------+       +--------------------+       +--------------------+
+ | id: int (PK)       |       | id: int (PK)       |       | id: int (PK)       |
+ | username: str      |       | title: str         |       | name: str          |
+ | hearts: int (max 5)|       | xp_reward: int     |       | cost_gems: int     |
+ | gems: int          |       | target_count: int  |       | icon: str          |
+ | streak: int        |       +--------------------+       | item_type: str     |
+ | streak_freezes: int|                                    +--------------------+
+ | last_active_date   |
+ +--------------------+
 ```
+
+---
+
+## 📌 Assumptions Made
+
+1. **Lightweight Standalone Persistence**: Uses SQLite by default with automated table creation and sample data seeding on initial startup, avoiding cumbersome external database configuration for evaluation. PostgreSQL connection strings (`DATABASE_URL`) are also supported.
+2. **Zero-Latency Audio & TTS**: To avoid external API rate limits, API keys, or quota expiration (e.g. OpenAI / ElevenLabs), sound effects are generated mathematically using the **Web Audio API**, and voice reading uses the browser-native **Web Speech API** (`es-ES`).
+3. **Single-User Evaluator Context**: The backend operates on an active learner profile seeded with realistic initial progress so evaluators can immediately test all features without having to register or grind through multiple units first.
 
 ---
 
 ## 🚀 Local Setup Instructions
 
 ### 1. Prerequisites
-- **Node.js** (v18+ or v20+)
-- **Python** (3.10+)
+- **Node.js**: v18+ or v20+
+- **Python**: 3.10+
+- **Git**
 
 ### 2. Backend Setup
 ```bash
 cd backend
 
-# Create virtual environment
+# 1. Create a virtual environment
 python -m venv venv
 
-# Activate virtual environment
+# 2. Activate the virtual environment
 # Windows:
 .\venv\Scripts\activate
 # macOS/Linux:
 source venv/bin/activate
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# Run FastAPI server (runs on http://127.0.0.1:8000)
+# 4. Start the FastAPI development server
 python run.py
 ```
-> **Note**: Database creation and initial course seeding occurs automatically on first run.
+The backend will be running at [http://127.0.0.1:8000](http://127.0.0.1:8000) with API docs at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
 ### 3. Frontend Setup
 ```bash
 cd frontend
 
-# Install npm dependencies
+# 1. Install dependencies
 npm install
 
-# Start development server (runs on http://localhost:3000)
+# 2. (Optional) Configure environment variable if pointing to local backend
+# Create .env.local with:
+# NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+
+# 3. Start the Next.js development server
 npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## ⚙️ Manual Production Deployment Guide
-
-When deploying to production (e.g., **Vercel** for Frontend + **Render / Railway** for Backend), follow these manual steps to avoid production issues:
-
-### 1. Backend Environment Variables
-| Variable | Required | Description | Example |
-|---|---|---|---|
-| `DATABASE_URL` | Optional | Connection string. If omitted, uses local persistent SQLite `duolingo.db`. In PostgreSQL, provide your connection URI. | `postgresql://user:pass@ep-xyz.render.com/duolingo` |
-| `PORT` | Optional | Port for the web service (Render/Railway sets this automatically). | `8000` |
-
-### 2. Frontend Environment Variables
-| Variable | Required | Description | Example |
-|---|---|---|---|
-| `NEXT_PUBLIC_API_URL` | **Yes** in Production | The public URL of your deployed FastAPI backend. | `https://duolingo-clone-backend.onrender.com` |
-
-### 3. CORS Configuration
-In `backend/app/main.py`, CORS is pre-configured with `allow_origins=["*"]`, allowing your Vercel deployment domain to communicate seamlessly with your backend without cross-origin blocks.
-
-### 4. Zero External API Keys Needed
-- **Speech Synthesis**: Uses browser-native Web Speech API (`SpeechSynthesisUtterance`).
-- **Sound Effects**: Uses browser-native Web Audio API (`AudioContext`) to synthesize tones dynamically.
-- No third-party API keys (OpenAI, ElevenLabs, etc.) are required, ensuring zero API quota limits and zero hosting costs.
-
----
-
-## 🧪 SDE Evaluator & Demo Panel
-
-An embedded **Evaluator Control Panel** is provided in the right sidebar and profile page:
-1. **Next Day**: Advances the simulated day counter. If the user earned XP today, streak increments by 1; otherwise, it tests streak freeze protection or streak reset.
-2. **Refill Hearts**: Restores hearts to 5/5 immediately.
-3. **Reset Demo**: Restores initial seeded state (Unit 1, Lesson 3 active) for clean re-evaluation.

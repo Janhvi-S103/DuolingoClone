@@ -254,7 +254,7 @@ export default function HomePage() {
                           key={skill.id}
                           className="node-outer-container"
                           style={{
-                            transform: `translateX(${xOffset}px)`,
+                            ["--node-x-offset" as any]: `${xOffset}px`,
                             zIndex: isSelected ? 150 : 20 - index
                           }}
                         >

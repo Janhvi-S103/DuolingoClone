@@ -326,6 +326,11 @@ a {
   align-items: center;
   gap: 8px;
 }
+.sidebar-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
 .sidebar-logo-text {
   font-size: 30px;
   font-weight: 900;
@@ -336,9 +341,20 @@ a {
 .sidebar-logo-text:hover {
   text-decoration: none;
 }
+.sidebar-logo-icon {
+  display: none;
+  font-size: 32px;
+  line-height: 1;
+}
 
 .sidebar-left a {
   text-decoration: none;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .nav-link {
@@ -357,6 +373,15 @@ a {
   cursor: pointer;
   border: 2px solid transparent;
   text-decoration: none !important;
+}
+.nav-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nav-link-text {
+  display: inline;
 }
 .nav-link:hover {
   background-color: var(--card-hover);
@@ -687,6 +712,8 @@ a {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transform: translateX(var(--node-x-offset, 0px));
+  transition: transform 0.2s ease;
 }
 
 /* Active Node with Circular Progress Ring Track */
@@ -1696,13 +1723,121 @@ a {
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Responsive */
+.profile-header-card {
+  padding: 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM (Desktop, Tablet & Mobile)
+   ========================================================================== */
+
+/* 1. Large Screen to Small Desktop (<= 1100px) */
 @media (max-width: 1100px) {
   .right-sidebar {
-    display: none;
+    display: none !important;
+  }
+  .main-content {
+    padding: 0 24px 80px 24px;
   }
 }
+
+/* 2. Tablet View (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --sidebar-width: 84px;
+  }
+
+  .sidebar-left {
+    width: 84px;
+    padding: 24px 8px 20px 8px;
+    align-items: center;
+  }
+
+  .sidebar-logo {
+    padding: 0 0 24px 0;
+    justify-content: center;
+  }
+  .sidebar-logo-text {
+    display: none;
+  }
+  .sidebar-logo-icon {
+    display: inline-flex;
+  }
+
+  .sidebar-nav {
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    gap: 0;
+  }
+  .nav-link-text {
+    display: none;
+  }
+
+  .main-content {
+    padding: 0 24px 80px 24px;
+  }
+
+  .path-center-column {
+    max-width: 580px;
+    width: 100%;
+  }
+
+  .top-stats-bar {
+    padding: 14px 24px 10px 24px;
+    justify-content: flex-end;
+  }
+
+  .unit-banner-sticky-container {
+    top: 66px;
+    max-width: 580px;
+  }
+
+  .path-mascot-wrapper {
+    display: none;
+  }
+
+  .lesson-nav-header {
+    max-width: 800px;
+    padding: 16px 24px;
+  }
+
+  .lesson-main-stage {
+    max-width: 600px;
+    padding: 16px 24px 120px 24px;
+  }
+
+  .lesson-footer-inner-max {
+    max-width: 800px;
+    padding: 0 12px;
+  }
+}
+
+/* 3. Mobile Devices (<= 768px) */
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .app-container {
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Bottom Navigation Bar on Mobile */
   .sidebar-left {
     position: fixed;
     bottom: 0;
@@ -1710,28 +1845,395 @@ a {
     left: 0;
     right: 0;
     width: 100%;
-    height: 70px;
+    height: 66px;
     flex-direction: row;
     justify-content: space-around;
-    padding: 6px 12px;
+    align-items: center;
+    padding: 4px 10px;
     border-right: none;
     border-top: 2px solid var(--card-border);
+    background-color: var(--bg-sidebar);
+    z-index: 1000;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.16);
   }
-  .nav-link {
-    flex-direction: column;
-    gap: 4px;
-    font-size: 11px;
-    padding: 6px 8px;
-    margin-bottom: 0;
-  }
-  .main-content {
-    padding: 0 16px 80px 16px;
-  }
-  .path-mascot-wrapper {
+
+  .sidebar-logo {
     display: none;
   }
+
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .nav-link {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    margin-bottom: 0;
+    border-radius: 14px;
+    flex: 1;
+    max-width: 64px;
+    height: 52px;
+    gap: 0;
+  }
+  .nav-link-text {
+    display: none;
+  }
+  .nav-link-icon img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .right-sidebar {
+    display: none !important;
+  }
+
+  /* Top Stats Bar Mobile */
+  .top-stats-bar {
+    position: sticky;
+    top: 0;
+    z-index: 95;
+    width: 100%;
+    padding: 10px 14px;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--card-border);
+    background: var(--bg-main);
+  }
+
+  .stat-pill {
+    padding: 4px 8px;
+    font-size: 14px;
+    gap: 5px;
+    border-radius: 10px;
+  }
+
+  /* Main Container Area */
+  .main-content {
+    padding: 0 14px 96px 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .path-center-column {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Sticky Unit Banner */
+  .unit-banner-sticky-container {
+    top: 52px;
+    margin-top: 6px;
+    margin-bottom: 30px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .unit-banner-exact {
+    padding: 12px 14px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+
+  .unit-banner-title {
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  .unit-section-tag {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .unit-guidebook-btn-exact {
+    padding: 6px 10px;
+    font-size: 11px;
+    gap: 4px;
+    border-radius: 12px;
+  }
+
+  /* Learning Path Nodes */
+  .path-flow-container {
+    gap: 38px;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .path-mascot-wrapper {
+    display: none !important;
+  }
+
+  .unit-transition-divider {
+    max-width: 100%;
+    margin: 36px auto 28px auto;
+    padding: 0 10px;
+    gap: 12px;
+  }
+
+  .unit-divider-title {
+    font-size: 16px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Popover Dialog on Mobile */
+  .node-popover-duo {
+    width: 280px;
+    max-width: calc(100vw - 40px);
+    padding: 16px 18px;
+    border-radius: 16px;
+  }
+  .node-popover-duo h3 {
+    font-size: 17px;
+  }
+  .node-popover-duo p {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .popover-start-btn,
+  .popover-locked-btn {
+    padding: 11px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  /* ==========================================================================
+     LESSON PLAYER MOBILE STYLES
+     ========================================================================== */
+  .lesson-page-container {
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .lesson-nav-header {
+    padding: 10px 14px;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .lesson-nav-close {
+    padding: 4px;
+  }
+
+  .lesson-track-container {
+    height: 14px;
+  }
+
+  .lesson-track-bg {
+    height: 14px;
+    border-radius: 7px;
+  }
+
+  .lesson-streak-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    top: -20px;
+  }
+
+  .lesson-hearts-badge {
+    font-size: 15px;
+    gap: 4px;
+  }
+
+  .lesson-main-stage {
+    padding: 12px 14px 120px 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .exercise-heading-text {
+    font-size: clamp(19px, 5.2vw, 24px);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+
+  .new-word-capsule {
+    font-size: 11px;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Character speech row */
+  .character-speech-row {
+    gap: 10px;
+    margin-bottom: 18px;
+    width: 100%;
+  }
+
+  .character-speech-bubble {
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 17px;
+    flex: 1;
+  }
+
+  .character-speech-bubble .audio-play-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .interactive-spanish-word {
+    font-size: 17px;
+  }
+
+  /* Match Pairs Grid */
   .match-pairs-board {
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .match-pair-card {
+    padding: 10px 8px;
+    min-height: 50px;
+    border-radius: 12px;
+  }
+
+  .match-pair-label {
+    font-size: 14px;
+  }
+
+  .match-pair-key-badge {
+    display: none;
+  }
+
+  /* Word bank tray */
+  .word-bank-tray {
+    min-height: 64px;
+    padding: 10px 8px;
+    gap: 6px;
+    border-radius: 14px;
+  }
+
+  .word-pill {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  /* Multiple choice */
+  .multiple-choice-option-btn {
+    padding: 12px 14px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+
+  /* Type the answer */
+  .type-answer-input {
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  /* Lesson Footer Bar */
+  .lesson-footer-bar {
+    padding: 12px 14px;
+  }
+
+  .lesson-footer-inner-max {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .feedback-badge-row {
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .feedback-check-circle,
+  .feedback-wrong-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .feedback-text-title {
+    font-size: 17px;
+  }
+
+  .feedback-solution-text {
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .feedback-quick-options {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .check-action-btn {
+    padding: 12px 22px;
+    font-size: 14px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .skip-action-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-card {
+    padding: 22px 16px;
+    border-radius: 20px;
+    max-width: 94vw;
+  }
+
+  .guidebook-modal-card {
+    max-width: 96vw;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+}
+
+/* 4. Extra Small Devices (<= 400px) */
+@media (max-width: 400px) {
+  .stat-pill {
+    padding: 3px 6px;
+    font-size: 13px;
+    gap: 3px;
+  }
+
+  .sidebar-left {
+    height: 60px;
+    padding: 3px 6px;
+  }
+
+  .nav-link {
+    height: 46px;
+    padding: 4px 6px;
+  }
+  .nav-link-icon img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .exercise-heading-text {
+    font-size: 18px;
+  }
+
+  .check-action-btn {
+    padding: 10px 18px;
+    font-size: 13px;
   }
 }
 

@@ -107,15 +107,16 @@ export function Sidebar() {
 
   return (
     <aside className="sidebar-left">
-      {/* Exact Duolingo Wordmark Logo */}
+      {/* Exact Duolingo Wordmark Logo & Mobile/Tablet compact Logo */}
       <div className="sidebar-logo">
-        <Link href="/" onClick={playClickSound} className="sidebar-logo-text">
-          duolingo
+        <Link href="/" onClick={playClickSound} className="sidebar-logo-link">
+          <span className="sidebar-logo-text">duolingo</span>
+          <span className="sidebar-logo-icon">🦉</span>
         </Link>
       </div>
 
       {/* Nav List */}
-      <nav style={{ flex: 1 }}>
+      <nav className="sidebar-nav">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -124,9 +125,10 @@ export function Sidebar() {
               href={item.href}
               onClick={playClickSound}
               className={`nav-link ${isActive ? "active" : ""}`}
+              title={item.label}
             >
-              {item.icon}
-              <span>{item.label}</span>
+              <div className="nav-link-icon">{item.icon}</div>
+              <span className="nav-link-text">{item.label}</span>
             </Link>
           );
         })}
