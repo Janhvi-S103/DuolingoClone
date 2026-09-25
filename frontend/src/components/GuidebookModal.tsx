@@ -61,7 +61,7 @@ export function GuidebookModal({
               <BookOpen size={22} />
             </div>
             <div>
-              <h3 style={{ fontSize: 20, fontWeight: 900 }}>{unitTitle} Guidebook</h3>
+              <h3 style={{ fontSize: 20, fontWeight: 900, color: "var(--text-main)" }}>{unitTitle} Guidebook</h3>
               <p style={{ fontSize: 13, color: "var(--text-sub)", fontWeight: 600 }}>
                 {VOCABULARY_LIST.length} Words of the Language & Grammar tips
               </p>
@@ -79,7 +79,7 @@ export function GuidebookModal({
         </div>
 
         {/* Tab Selector */}
-        <div style={{ display: "flex", gap: 8, borderBottom: "2px solid #2b383f", paddingBottom: 10, marginBottom: 16 }}>
+        <div style={{ display: "flex", gap: 8, borderBottom: "2px solid var(--card-border)", paddingBottom: 10, marginBottom: 16 }}>
           <button
             onClick={() => {
               playClickSound();
@@ -90,8 +90,8 @@ export function GuidebookModal({
               padding: "10px 14px",
               borderRadius: 10,
               background: activeTab === "vocab" ? "rgba(88, 204, 2, 0.15)" : "transparent",
-              color: activeTab === "vocab" ? "#58cc02" : "var(--text-sub)",
-              border: activeTab === "vocab" ? "2px solid #58cc02" : "2px solid transparent",
+              color: activeTab === "vocab" ? "var(--green)" : "var(--text-sub)",
+              border: activeTab === "vocab" ? "2px solid var(--green)" : "2px solid transparent",
               fontWeight: 800,
               fontSize: 14,
               cursor: "pointer",
@@ -115,9 +115,9 @@ export function GuidebookModal({
               flex: 1,
               padding: "10px 14px",
               borderRadius: 10,
-              background: activeTab === "grammar" ? "rgba(28, 176, 246, 0.15)" : "transparent",
-              color: activeTab === "grammar" ? "#1cb0f6" : "var(--text-sub)",
-              border: activeTab === "grammar" ? "2px solid #1cb0f6" : "2px solid transparent",
+              background: activeTab === "grammar" ? "var(--blue-light)" : "transparent",
+              color: activeTab === "grammar" ? "var(--blue)" : "var(--text-sub)",
+              border: activeTab === "grammar" ? "2px solid var(--blue)" : "2px solid transparent",
               fontWeight: 800,
               fontSize: 14,
               cursor: "pointer",
@@ -147,10 +147,10 @@ export function GuidebookModal({
                 style={{
                   width: "100%",
                   padding: "10px 14px 10px 40px",
-                  background: "#18272e",
-                  border: "2px solid #2b383f",
+                  background: "var(--bg-subtle)",
+                  border: "2px solid var(--card-border)",
                   borderRadius: 12,
-                  color: "#ffffff",
+                  color: "var(--text-main)",
                   fontSize: 14,
                   fontWeight: 600,
                   outline: "none"
@@ -175,9 +175,9 @@ export function GuidebookModal({
                     fontWeight: 700,
                     cursor: "pointer",
                     border: "1.5px solid",
-                    borderColor: selectedCategory === cat ? "#58cc02" : "#2b383f",
-                    background: selectedCategory === cat ? "#58cc02" : "#18272e",
-                    color: selectedCategory === cat ? "#131f24" : "var(--text-sub)",
+                    borderColor: selectedCategory === cat ? "var(--green)" : "var(--card-border)",
+                    background: selectedCategory === cat ? "var(--green)" : "var(--bg-subtle)",
+                    color: selectedCategory === cat ? "#ffffff" : "var(--text-sub)",
                     transition: "all 0.15s"
                   }}
                 >
@@ -196,15 +196,15 @@ export function GuidebookModal({
                     alignItems: "center",
                     justifyContent: "space-between",
                     padding: "12px 16px",
-                    background: "#18272e",
-                    border: "1.5px solid #2b383f",
+                    background: "var(--bg-subtle)",
+                    border: "1.5px solid var(--card-border)",
                     borderRadius: 12,
                     transition: "border-color 0.15s"
                   }}
                 >
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ fontSize: 17, fontWeight: 800, color: "#ffffff" }}>
+                      <span style={{ fontSize: 17, fontWeight: 800, color: "var(--text-main)" }}>
                         {word.spanish}
                       </span>
                       <span
@@ -213,7 +213,7 @@ export function GuidebookModal({
                           fontWeight: 700,
                           padding: "2px 8px",
                           borderRadius: 6,
-                          background: "rgba(255, 255, 255, 0.08)",
+                          background: "var(--card-hover)",
                           color: "var(--text-sub)"
                         }}
                       >
@@ -221,7 +221,7 @@ export function GuidebookModal({
                       </span>
                     </div>
 
-                    <div style={{ fontSize: 14, color: "#58cc02", fontWeight: 700, marginTop: 2 }}>
+                    <div style={{ fontSize: 14, color: "var(--green)", fontWeight: 700, marginTop: 2 }}>
                       {word.english}
                     </div>
 
@@ -243,9 +243,9 @@ export function GuidebookModal({
                       width: 40,
                       height: 40,
                       borderRadius: 10,
-                      background: "#202f36",
-                      border: "2px solid #37464f",
-                      color: "#1cb0f6",
+                      background: "var(--card-bg)",
+                      border: "2px solid var(--card-border)",
+                      color: "var(--blue)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -277,7 +277,8 @@ export function GuidebookModal({
               lineHeight: 1.6,
               fontSize: 15,
               paddingRight: 8,
-              whiteSpace: "pre-line"
+              whiteSpace: "pre-line",
+              color: "var(--text-main)"
             }}
           >
             {guidebookContent || "No grammar notes available for this unit yet."}

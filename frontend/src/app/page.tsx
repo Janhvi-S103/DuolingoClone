@@ -10,13 +10,13 @@ import { HeartsModal } from "@/components/HeartsModal";
 import { MascotDuo } from "@/components/MascotDuo";
 import { api, CoursePathData, SkillItem } from "@/utils/api";
 import { playClickSound } from "@/utils/sound";
-import { Star, Trophy, ArrowLeft, Crown, Sparkles, BookOpen, Check } from "lucide-react";
+import { Star, Trophy, ArrowLeft, Check } from "lucide-react";
 
 export default function HomePage() {
   const [data, setData] = useState<CoursePathData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedSkill, setSelectedSkill] = useState<SkillItem | null>(null);
-  const [showGuidebook, setShowGuidebook] = useState(false);
+  const [showGuidebook, setShowGuidebook] = useState<string | false>(false);
   const [showHeartsModal, setShowHeartsModal] = useState(false);
   const [actionLoading, setActionLoading] = useState(false);
 
@@ -78,7 +78,6 @@ export default function HomePage() {
       let currentIdx = 0;
       unitBlocks.forEach((block, idx) => {
         const rect = block.getBoundingClientRect();
-        // If the top of the block has scrolled near or past the sticky header zone (top < 240px)
         if (rect.top <= 240) {
           currentIdx = idx;
         }
@@ -96,7 +95,7 @@ export default function HomePage() {
 
   if (loading || !data) {
     return (
-      <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "#131f24" }}>
+      <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "var(--bg-main)" }}>
         <MascotDuo mood="happy" size={110} />
       </div>
     );
@@ -139,7 +138,7 @@ export default function HomePage() {
 
         <main className="main-content">
           <div className="path-center-column">
-            {/* Single Sticky Unit Header Banner (Transitions color and title smoothly on scroll) */}
+            {/* Single Sticky Unit Header Banner */}
             <div className="unit-banner-sticky-container">
               <div
                 className="unit-banner-exact"
@@ -161,7 +160,7 @@ export default function HomePage() {
                 <button
                   onClick={() => {
                     playClickSound();
-                    setShowGuidebook(currentUnit?.title);
+                    setShowGuidebook(currentUnit?.title || "Order at a café");
                   }}
                   className="unit-guidebook-btn-exact"
                 >
@@ -185,35 +184,50 @@ export default function HomePage() {
                 <div key={unit.id} className="unit-section-block" style={{ width: "100%", marginBottom: 20 }}>
                   {/* Snake Curve Path Container */}
                   <div className="path-flow-container">
-                    {/* Unit 1 Mascot: Duo Bird */}
+                    {/* Unit 1 Mascot */}
                     {unitNumber === 1 && (
-                      <div className="path-mascot-wrapper" style={{ top: 195, left: 360 }}>
-                        <MascotDuo mood="happy" size={96} />
-                        <div className="path-mascot-pedestal" />
+                      <div className="path-mascot-wrapper" style={{ top: 90, left: 340 }}>
+                        <img
+                          src="https://d35aaqx5ub95lt.cloudfront.net/images/pathCharacters/active/a506d9752e476f9e29b898c8350e21c6.svg"
+                          alt="Unit 1 Mascot"
+                          style={{ width: 243, height: 243, objectFit: "contain", display: "block" }}
+                        />
                       </div>
                     )}
 
                     {/* Unit 2 Mascot: Official Lily SVG */}
                     {unitNumber === 2 && (
-                      <div className="path-mascot-wrapper" style={{ top: 130, left: 60 }}>
+                      <div className="path-mascot-wrapper" style={{ top: 65, left: 30 }}>
                         <img
                           src="https://d35aaqx5ub95lt.cloudfront.net/images/pathCharacters/dark/a3e1fd17f6d11b10ecae6bf5bc1ca701.svg"
-                          alt="Lily Mascot"
-                          style={{ width: 110, height: 110, objectFit: "contain", display: "block" }}
+                          alt="Lily Mascot Dark"
+                          className="img-theme-dark"
+                          style={{ width: 187, height: 187, objectFit: "contain", display: "block" }}
                         />
-                        <div className="path-mascot-pedestal" style={{ width: 84, marginTop: -8 }} />
+                        <img
+                          src="https://d35aaqx5ub95lt.cloudfront.net/images/pathCharacters/locked/34443969dabd59f00795cc94457c1b3b.svg"
+                          alt="Lily Mascot Light"
+                          className="img-theme-light"
+                          style={{ width: 187, height: 187, objectFit: "contain", display: "block" }}
+                        />
                       </div>
                     )}
 
                     {/* Unit 3 Mascot: Official Bear / Falstaff SVG */}
                     {unitNumber === 3 && (
-                      <div className="path-mascot-wrapper" style={{ top: 10, left: 340 }}>
+                      <div className="path-mascot-wrapper" style={{ top: -50, left: 330 }}>
                         <img
                           src="https://d35aaqx5ub95lt.cloudfront.net/images/pathCharacters/dark/350eb5e80d4ddc292088d0acc5ef3e2d.svg"
-                          alt="Falstaff Mascot"
-                          style={{ width: 110, height: 110, objectFit: "contain", display: "block" }}
+                          alt="Falstaff Mascot Dark"
+                          className="img-theme-dark"
+                          style={{ width: 187, height: 187, objectFit: "contain", display: "block" }}
                         />
-                        <div className="path-mascot-pedestal" style={{ width: 88, marginTop: -8 }} />
+                        <img
+                          src="https://d35aaqx5ub95lt.cloudfront.net/images/pathCharacters/locked/f1a8ca7d22677f84c9781b7e9034f688.svg"
+                          alt="Falstaff Mascot Light"
+                          className="img-theme-light"
+                          style={{ width: 187, height: 187, objectFit: "contain", display: "block" }}
+                        />
                       </div>
                     )}
 
@@ -287,7 +301,7 @@ export default function HomePage() {
                                   cy="54"
                                   r="47"
                                   fill="none"
-                                  stroke="#2b383f"
+                                  stroke="var(--active-node-track)"
                                   strokeWidth="8.5"
                                 />
                                 {progressFraction > 0 && (
@@ -312,7 +326,7 @@ export default function HomePage() {
                               </div>
                             </div>
                           ) : isFastForward ? (
-                            /* Fast Forward Jump Purple Node (Exact match to Reference 2) */
+                            /* Fast Forward Jump Purple Node */
                             <div
                               className="fast-forward-node-btn"
                               onClick={() => {
@@ -325,7 +339,7 @@ export default function HomePage() {
                               </svg>
                             </div>
                           ) : isChest ? (
-                            /* Chest Node with chestlearning.png */
+                            /* Chest Node */
                             <div
                               className="chest-node-btn"
                               onClick={() => {
@@ -333,14 +347,29 @@ export default function HomePage() {
                                 setSelectedSkill(isSelected ? null : skill);
                               }}
                             >
+                              {/* Dark Mode Chest */}
                               <img
                                 src="/assets/learningpath/chestlearning.png"
-                                alt="Chest"
-                                width={68}
-                                height={56}
+                                alt="Chest Dark"
+                                className="img-theme-dark"
+                                width={119}
+                                height={98}
                                 style={{
                                   objectFit: "contain",
                                   filter: isUnlocked ? "none" : "grayscale(1) brightness(0.65)",
+                                  transition: "filter 0.2s ease"
+                                }}
+                              />
+                              {/* Light Mode Chest SVG */}
+                              <img
+                                src="https://d35aaqx5ub95lt.cloudfront.net/images/path/b841637c196f5be786d8b8578a42ffbf.svg"
+                                alt="Chest Light"
+                                className="img-theme-light"
+                                width={119}
+                                height={98}
+                                style={{
+                                  objectFit: "contain",
+                                  filter: isUnlocked ? "none" : "grayscale(1) opacity(0.85)",
                                   transition: "filter 0.2s ease"
                                 }}
                               />
@@ -355,14 +384,14 @@ export default function HomePage() {
                               }}
                             >
                               {isTrophy ? (
-                                <Trophy size={32} fill="#52656d" stroke="#52656d" />
+                                <Trophy size={32} fill="var(--locked-node-icon)" stroke="var(--locked-node-icon)" />
                               ) : isHeadset ? (
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#52656d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--locked-node-icon)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-                                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" fill="#52656d" />
+                                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" fill="var(--locked-node-icon)" />
                                 </svg>
                               ) : (
-                                <Star size={32} fill="#52656d" stroke="#52656d" />
+                                <Star size={32} fill="var(--locked-node-icon)" stroke="var(--locked-node-icon)" />
                               )}
                             </div>
                           )}
@@ -409,7 +438,7 @@ export default function HomePage() {
                     })}
                   </div>
 
-                  {/* End of Unit / Lesson Section Line with next unit title (Exact match to screenshot) */}
+                  {/* End of Unit / Lesson Section Line with next unit title */}
                   {unitIdx < data.units.length - 1 && (
                     <div className="unit-transition-divider">
                       <div className="unit-divider-line" />

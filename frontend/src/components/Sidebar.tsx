@@ -13,14 +13,14 @@ export function Sidebar() {
       label: "LEARN",
       href: "/",
       icon: (
-        <span style={{ fontSize: 24, display: "inline-flex", alignItems: "center" }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            {/* Red roof house */}
-            <path d="M12 3L2 12H5V20H19V12H22L12 3Z" fill="#ff4b4b" />
-            <path d="M9 20V13H15V20H9Z" fill="#ffc800" />
-            <rect x="5" y="11" width="14" height="9" fill="#ff9600" />
-            <rect x="9" y="14" width="6" height="6" fill="#131f24" />
-          </svg>
+        <span style={{ width: 32, height: 32, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="https://d35aaqx5ub95lt.cloudfront.net/vendor/784035717e2ff1d448c0f6cc4efc89fb.svg"
+            alt="Learn"
+            width={32}
+            height={32}
+            style={{ width: 32, height: 32, objectFit: "contain" }}
+          />
         </span>
       ),
     },
@@ -28,15 +28,14 @@ export function Sidebar() {
       label: "LEADERBOARDS",
       href: "/leaderboard",
       icon: (
-        <span style={{ fontSize: 24, display: "inline-flex", alignItems: "center" }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2L4 5V11C4 16.5 7.5 21.5 12 22C16.5 21.5 20 16.5 20 11V5L12 2Z"
-              fill="#ffc800"
-              stroke="#e5a500"
-              strokeWidth="2"
-            />
-          </svg>
+        <span style={{ width: 32, height: 32, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ca9178510134b4b0893dbac30b6670aa.svg"
+            alt="Leaderboards"
+            width={32}
+            height={32}
+            style={{ width: 32, height: 32, objectFit: "contain" }}
+          />
         </span>
       ),
     },
@@ -44,12 +43,14 @@ export function Sidebar() {
       label: "QUESTS",
       href: "/quests",
       icon: (
-        <span style={{ fontSize: 24, display: "inline-flex", alignItems: "center" }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="6" width="18" height="14" rx="3" fill="#ffc800" stroke="#e5a500" strokeWidth="2" />
-            <path d="M3 11H21" stroke="#4b4b4b" strokeWidth="2" />
-            <rect x="10" y="9" width="4" height="4" rx="1" fill="#ff4b4b" />
-          </svg>
+        <span style={{ width: 32, height: 32, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="https://d35aaqx5ub95lt.cloudfront.net/vendor/7ef36bae3f9d68fc763d3451b5167836.svg"
+            alt="Quests"
+            width={32}
+            height={32}
+            style={{ width: 32, height: 32, objectFit: "contain" }}
+          />
         </span>
       ),
     },
@@ -57,12 +58,14 @@ export function Sidebar() {
       label: "SHOP",
       href: "/shop",
       icon: (
-        <span style={{ fontSize: 24, display: "inline-flex", alignItems: "center" }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M4 4H20L22 10H2L4 4Z" fill="#ff4b4b" />
-            <rect x="3" y="10" width="18" height="11" rx="2" fill="#1cb0f6" />
-            <rect x="9" y="14" width="6" height="7" fill="#ffffff" />
-          </svg>
+        <span style={{ width: 32, height: 32, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="https://d35aaqx5ub95lt.cloudfront.net/vendor/0e58a94dda219766d98c7796b910beee.svg"
+            alt="Shop"
+            width={32}
+            height={32}
+            style={{ width: 32, height: 32, objectFit: "contain" }}
+          />
         </span>
       ),
     },
@@ -75,16 +78,28 @@ export function Sidebar() {
             width: 26,
             height: 26,
             borderRadius: "50%",
-            border: "2px dashed #8598a2",
+            border: "2px dashed var(--text-muted)",
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: 13,
             fontWeight: 800,
-            color: "#8598a2"
+            color: "var(--text-muted)"
           }}
         >
           J
+        </span>
+      ),
+    },
+    {
+      label: "SETTINGS",
+      href: "/settings",
+      icon: (
+        <span style={{ fontSize: 24, display: "inline-flex", alignItems: "center" }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
         </span>
       ),
     },

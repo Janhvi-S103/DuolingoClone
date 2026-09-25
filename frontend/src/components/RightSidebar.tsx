@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { RotateCcw, Calendar } from "lucide-react";
 import { playClickSound } from "@/utils/sound";
-import { api, LeaderboardUser } from "@/utils/api";
+import { api } from "@/utils/api";
 
 interface RightSidebarProps {
   todayXp: number;
@@ -58,19 +58,19 @@ export function RightSidebar({
         {/* Super Metallic Badge from assets */}
         <div style={{ marginBottom: 14 }}>
           <img
-            src="/assets/rightsidebar/super.png"
+            src="https://d35aaqx5ub95lt.cloudfront.net/images/super/2e50c3e8358914df5285dc8cf45d0b4c.svg"
             alt="SUPER"
             style={{ height: 28, width: "auto", objectFit: "contain", display: "block" }}
           />
         </div>
 
-        <h3 style={{ fontSize: 18, fontWeight: 900, marginBottom: 8, color: "#ffffff", zIndex: 2, position: "relative" }}>
+        <h3 style={{ fontSize: 18, fontWeight: 900, marginBottom: 8, color: "var(--text-main)", zIndex: 2, position: "relative" }}>
           Try Super for free
         </h3>
         <p
           style={{
             fontSize: 14,
-            color: "#94a3b8",
+            color: "var(--text-sub)",
             fontWeight: 600,
             lineHeight: 1.45,
             marginBottom: 20,
@@ -104,10 +104,10 @@ export function RightSidebar({
         </Link>
       </div>
 
-      {/* 2. Leaderboard Rank Card (With official Silver league SVG and live position) */}
+      {/* 2. Leaderboard Rank Card */}
       <div className="sidebar-panel-card">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-          <h3 style={{ fontSize: 18, fontWeight: 900, color: "white", margin: 0 }}>
+          <h3 style={{ fontSize: 18, fontWeight: 900, color: "var(--text-main)", margin: 0 }}>
             {currentUserRank ? `${league} League` : "Unlock Leaderboards!"}
           </h3>
           <Link
@@ -116,7 +116,7 @@ export function RightSidebar({
             style={{
               fontSize: 13,
               fontWeight: 800,
-              color: "#1cb0f6",
+              color: "var(--blue)",
               textTransform: "uppercase",
               letterSpacing: 0.5,
               textDecoration: "none",
@@ -133,10 +133,10 @@ export function RightSidebar({
             style={{ width: 48, height: 56, objectFit: "contain", flexShrink: 0 }}
           />
           <div>
-            <div style={{ fontSize: 15, fontWeight: 900, color: "#ffffff", marginBottom: 2 }}>
+            <div style={{ fontSize: 15, fontWeight: 900, color: "var(--text-main)", marginBottom: 2 }}>
               {currentUserRank ? `Rank #${currentUserRank}` : "Complete 2 more lessons"}
             </div>
-            <p style={{ fontSize: 13, color: "#94a3b8", fontWeight: 600, lineHeight: 1.4, margin: 0 }}>
+            <p style={{ fontSize: 13, color: "var(--text-sub)", fontWeight: 600, lineHeight: 1.4, margin: 0 }}>
               {currentUserRank
                 ? currentUserRank <= 3
                   ? "In the promotion zone! Top 3 advance."
@@ -150,14 +150,14 @@ export function RightSidebar({
       {/* 3. Daily Quests Card */}
       <div className="sidebar-panel-card">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: 16 }}>
-          <span style={{ fontSize: 18, fontWeight: 900, color: "white" }}>Daily Quests</span>
+          <span style={{ fontSize: 18, fontWeight: 900, color: "var(--text-main)" }}>Daily Quests</span>
           <Link
             href="/quests"
             onClick={playClickSound}
             style={{
               fontSize: 13,
               fontWeight: 800,
-              color: "#1cb0f6",
+              color: "var(--blue)",
               textTransform: "uppercase",
               letterSpacing: 0.5,
               textDecoration: "none",
@@ -176,7 +176,7 @@ export function RightSidebar({
           />
 
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 15, fontWeight: 800, color: "white", marginBottom: 8 }}>
+            <div style={{ fontSize: 15, fontWeight: 800, color: "var(--text-main)", marginBottom: 8 }}>
               Earn {dailyGoalXp || 10} XP
             </div>
 
@@ -186,18 +186,18 @@ export function RightSidebar({
                 style={{
                   flex: 1,
                   height: 18,
-                  background: "#202f36",
+                  background: "var(--bg-subtle)",
                   borderRadius: 9,
                   overflow: "hidden",
                   position: "relative",
-                  border: "1px solid #37464f",
+                  border: "1px solid var(--card-border)",
                 }}
               >
                 <div
                   style={{
                     height: "100%",
                     width: `${questPercent}%`,
-                    background: "#ffc800",
+                    background: "var(--yellow)",
                     borderRadius: 9,
                     transition: "width 0.4s ease",
                   }}
@@ -211,7 +211,7 @@ export function RightSidebar({
                     justifyContent: "center",
                     fontSize: 11,
                     fontWeight: 900,
-                    color: questPercent >= 50 ? "#855400" : "#94a3b8",
+                    color: questPercent >= 50 ? "#6d4400" : "var(--text-sub)",
                     letterSpacing: 0.5,
                   }}
                 >
@@ -235,12 +235,12 @@ export function RightSidebar({
         className="sidebar-panel-card"
         style={{
           borderStyle: "dashed",
-          borderColor: "#37464f",
-          background: "#18272e",
+          borderColor: "var(--card-border)",
+          background: "var(--bg-subtle)",
           padding: 16,
         }}
       >
-        <div style={{ fontSize: 13, fontWeight: 800, color: "#1cb0f6", marginBottom: 10 }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: "var(--blue)", marginBottom: 10 }}>
           ⚙️ Evaluator Demo Controls
         </div>
         <div style={{ display: "flex", gap: 8 }}>
@@ -272,7 +272,7 @@ export function RightSidebar({
       </div>
 
       {/* 5. Duolingo Footer Links */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 12px", padding: "10px 4px", fontSize: 12, fontWeight: 700, color: "#52656d", textTransform: "uppercase", letterSpacing: 0.5 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 12px", padding: "10px 4px", fontSize: 12, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: 0.5 }}>
         <span style={{ cursor: "pointer" }}>About</span>
         <span style={{ cursor: "pointer" }}>Blog</span>
         <span style={{ cursor: "pointer" }}>Store</span>

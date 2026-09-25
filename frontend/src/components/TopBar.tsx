@@ -26,7 +26,13 @@ export function TopBar({
     <header className="top-stats-bar">
       {/* Flag with level number */}
       <div className="stat-pill" title="Current course">
-        <span style={{ fontSize: 20 }}>🇪🇸</span>
+        <img
+          src="https://d35aaqx5ub95lt.cloudfront.net/vendor/59a90a2cedd48b751a8fd22014768fd7.svg"
+          alt="Spanish"
+          width={28}
+          height={22}
+          style={{ width: 28, height: "auto", objectFit: "contain", display: "block" }}
+        />
         <span style={{ fontWeight: 800, fontSize: 15, marginLeft: 2 }}>1</span>
       </div>
 

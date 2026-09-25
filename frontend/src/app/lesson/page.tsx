@@ -513,7 +513,7 @@ function LessonContent() {
 
   if (loading || !lesson) {
     return (
-      <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "#131f24" }}>
+      <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "var(--bg-main)" }}>
         <MascotDuo mood="cheering" size={110} />
       </div>
     );
@@ -866,9 +866,9 @@ function LessonContent() {
                         key={opt}
                         className="word-tile-btn"
                         style={{
-                          borderColor: isSelected ? "#1cb0f6" : "#37464f",
-                          backgroundColor: isSelected ? "rgba(28, 176, 246, 0.15)" : "#18272e",
-                          color: isSelected ? "#1cb0f6" : "#ffffff"
+                          borderColor: isSelected ? "var(--blue)" : "var(--card-border)",
+                          backgroundColor: isSelected ? "var(--blue-light)" : "var(--card-bg)",
+                          color: isSelected ? "var(--blue)" : "var(--text-main)"
                         }}
                         onClick={() => {
                           if (feedbackStatus !== "idle") return;
@@ -1100,7 +1100,7 @@ export default function LessonPage() {
   return (
     <Suspense
       fallback={
-        <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "#131f24" }}>
+        <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center", background: "var(--bg-main)" }}>
           <MascotDuo mood="cheering" size={120} />
         </div>
       }
